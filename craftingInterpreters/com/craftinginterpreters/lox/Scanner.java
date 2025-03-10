@@ -1,11 +1,11 @@
-package java.com.craftinginterpreters.lox;
+package com.craftinginterpreters.lox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.com.craftinginterpreters.lox.TokenType.*;
+import static com.craftinginterpreters.lox.TokenType.*;
 
 public class Scanner {
     private final String source;
@@ -59,6 +59,12 @@ public class Scanner {
             case '/':
                 if(match('/')) {
                     while(peek() != '\n' && !isAtEnd()) advance();
+                } else if (match('*')) {
+                    while(peek() != '*' && !isAtEnd() && peekNext() != '/') {
+                        advance();
+                    }
+                    advance();
+                    advance();
                 } else {
                     addToken(SLASH);
                 }
