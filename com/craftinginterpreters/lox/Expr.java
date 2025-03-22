@@ -20,7 +20,7 @@ abstract class Expr {
 
     @Override
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitBinaryExpr(this);;
+      return visitor.visitBinaryExpr(this);
     }
 
     final Expr left;
