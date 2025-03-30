@@ -85,6 +85,10 @@ class Interpreter implements Expr.Visitor<Object> {
                     return (String)left + (String)right;
                 }
 
+                if(left instanceof String || right instanceof String) {
+                    return left.toString() + right.toString();
+                }
+
                 throw new RuntimeError(expr.operator, 
                     "Operands must be numbers.");
             case GREATER:
@@ -134,7 +138,6 @@ class Interpreter implements Expr.Visitor<Object> {
         if(left instanceof Double && right instanceof Double) return;
 
         throw new RuntimeError(operator, "Operands must be numbers.");
-
     }
 
 }
