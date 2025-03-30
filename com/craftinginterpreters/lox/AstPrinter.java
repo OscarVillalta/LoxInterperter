@@ -1,7 +1,5 @@
 package com.craftinginterpreters.lox;
 
-import java.beans.Expression;
-
 class AstPrinter implements Expr.Visitor<String> {
  
     String print(Expr expr) {
